@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CineScore — Movie Review Analyzer</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+
+  <div class="bg-blur"></div>
+
+  <header>
+    <div class="logo">
+      <span class="reel">🎬</span>
+      <span class="logo-text">CineScore</span>
+    </div>
+    <p class="tagline">AI-powered sentiment analysis for movie reviews</p>
+  </header>
+
+  <main>
+    <div class="card">
+      <label for="review-input" class="card-label">Paste or type a movie review</label>
+      <textarea
+        id="review-input"
+        placeholder="e.g. This film was an absolute masterpiece. The direction, acting, and cinematography were all top-notch..."
+        rows="7"
+        maxlength="5000"
+      ></textarea>
+      <div class="textarea-footer">
+        <span id="char-count">0 / 5000</span>
+        <button id="clear-btn" class="btn-ghost">Clear</button>
+      </div>
+
+      <div class="examples">
+        <span class="examples-label">Try an example:</span>
+        <button class="example-chip positive-chip" data-text="An absolute masterpiece. The performances were breathtaking, the cinematography stunning, and the story deeply moving. One of the best films I've ever seen.">Positive</button>
+        <button class="example-chip negative-chip" data-text="A complete waste of time. The plot was incoherent, the acting wooden, and the pacing unbearably slow. I nearly fell asleep twice.">Negative</button>
+        <button class="example-chip neutral-chip" data-text="It had some interesting moments but ultimately failed to deliver on its premise. The first half showed promise but the ending was disappointing.">Mixed</button>
+      </div>
+
+      <button id="analyze-btn" class="btn-primary">
+        <span class="btn-text">Analyze Sentiment</span>
+        <span class="btn-spinner" hidden>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+          </svg>
+        </span>
+      </button>
+    </div>
+
+    <!-- Result card (hidden until prediction) -->
+    <div class="result-card" id="result-card" hidden>
+      <div class="result-icon" id="result-icon"></div>
+      <div class="result-label" id="result-label"></div>
+      <div class="confidence-section">
+        <div class="confidence-text">
+          Confidence: <strong id="confidence-value"></strong>
+        </div>
+        <div class="confidence-bar-track">
+          <div class="confidence-bar-fill" id="confidence-bar"></div>
+        </div>
+      </div>
+      <p class="result-note" id="result-note"></p>
+    </div>
+
+    <!-- Error message -->
+    <div class="error-card" id="error-card" hidden>
+      <span>⚠️</span> <span id="error-msg"></span>
+    </div>
+  </main>
+
+  <footer>
+    <p>Trained on 50,000 IMDB reviews &bull; TF-IDF + Logistic Regression &bull; ~89% accuracy</p>
+  </footer>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
