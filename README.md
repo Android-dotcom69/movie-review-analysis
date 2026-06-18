@@ -8,7 +8,7 @@
 
 ## Demo
 
-![CineScore UI](https://i.imgur.com/placeholder.png)
+[![CineScore UI](https://i.imgur.com/placeholder.png)](https://cinescore-jek9.onrender.com)
 
 - Type or paste any movie review
 - Click **Analyze Sentiment**
